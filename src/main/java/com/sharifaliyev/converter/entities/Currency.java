@@ -1,0 +1,71 @@
+package com.sharifaliyev.converter.entities;
+
+
+
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+@Table(name = "currencies")
+public class Currency {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private String numCode;
+    private String charCode;
+    private int nominal;
+    private String name;
+
+    @OneToMany(mappedBy = "currency" ,fetch = FetchType.LAZY)
+    private List<CurrencyValue> values;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNumCode() {
+        return numCode;
+    }
+
+    public void setNumCode(String numCode) {
+        this.numCode = numCode;
+    }
+
+    public String getCharCode() {
+        return charCode;
+    }
+
+    public void setCharCode(String charCode) {
+        this.charCode = charCode;
+    }
+
+    public int getNominal() {
+        return nominal;
+    }
+
+    public void setNominal(int nominal) {
+        this.nominal = nominal;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<CurrencyValue> getValues() {
+        return values;
+    }
+
+    public void setValues(List<CurrencyValue> values) {
+        this.values = values;
+    }
+}
